@@ -1039,6 +1039,82 @@ a:hover {
   }
 }
 
+.contact-page-main {
+  padding-block: clamp(3rem, 7vw, 6rem) 4rem;
+}
+
+.contact-page-intro {
+  padding-bottom: 2rem;
+}
+
+.contact-page-intro h1 {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.contact-page-copy {
+  max-width: 38rem;
+  margin: 1.2rem 0 0;
+  color: var(--color-muted);
+  font-size: 1.04rem;
+  line-height: 1.8;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-top: 2rem;
+}
+
+.contact-card {
+  min-height: 11rem;
+  padding: 1.5rem 1.35rem;
+  background: rgb(255 255 255 / 80%);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+}
+
+.contact-card h2 {
+  margin: 0.7rem 0 0.5rem;
+  color: var(--color-ink);
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+}
+
+.contact-card h2 a {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.contact-card h2 a:hover {
+  color: var(--color-teal);
+}
+
+.contact-card p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.contact-label {
+  margin: 0;
+  color: var(--color-teal);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-card-wide {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 380px) {
   .site-nav {
     gap: 0.45rem 0.65rem;
@@ -1056,6 +1132,10 @@ a:hover {
   .credential-list li {
     flex-direction: column;
     gap: 0.2rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
 }
 
