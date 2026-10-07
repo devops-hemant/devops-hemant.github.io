@@ -31,8 +31,15 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.65;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -914,7 +921,37 @@ a:hover {
   font-size: 0.8rem;
 }
 
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-note {
+    max-width: 30rem;
+  }
+
+  .expertise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolkit-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .credentials-section {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 850px) {
+  .header-inner,
+  .section-wrap,
+  .footer-inner {
+    width: min(var(--content-width), calc(100% - 2rem));
+  }
+
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.8fr);
     gap: 2rem;
@@ -936,6 +973,10 @@ a:hover {
   .toolkit-section {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -970,6 +1011,15 @@ a:hover {
     grid-template-columns: 1fr;
     gap: 2.5rem;
     padding-block: 3.5rem 2.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions > * {
+    width: 100%;
   }
 
   .hero h1 {
@@ -1221,7 +1271,7 @@ a:hover {
   grid-column: 1 / -1;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   .site-nav {
     gap: 0.45rem 0.65rem;
   }
@@ -1242,6 +1292,10 @@ a:hover {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-page-intro h1 {
+    font-size: clamp(2.5rem, 18vw, 4rem);
   }
 }
 
