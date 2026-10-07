@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f8f7f4">
+    <meta name="theme-color" content="#0b1220">
     <meta name="description" content="Hemant Sharma — Platform Engineering Tech Lead with experience in cloud platforms, Kubernetes, DevOps, and developer enablement.">
     <meta property="og:title" content="Hemant Sharma — Platform Engineering Tech Lead">
     <meta property="og:description" content="Cloud platforms, Kubernetes, DevOps transformation, and developer enablement across Azure and AWS.">
@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="theme-dark">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
       <div class="header-inner">
@@ -23,6 +23,7 @@
           <a href="#expertise">Expertise</a>
           <a href="#projects">Projects</a>
           <a class="nav-contact" href="contact.html">Contact <span aria-hidden="true">↗</span></a>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">Dark mode</button>
         </nav>
       </div>
     </header>
@@ -286,5 +287,27 @@
         <a href="contact.html">Contact me</a>
       </div>
     </footer>
+    <script>
+      (function () {
+        const body = document.body;
+        const toggle = document.querySelector('.theme-toggle');
+        const storedTheme = localStorage.getItem('theme');
+        const isDark = storedTheme ? storedTheme === 'dark' : true;
+        body.classList.toggle('theme-dark', isDark);
+
+        if (toggle) {
+          toggle.setAttribute('aria-pressed', String(isDark));
+          toggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+
+          toggle.addEventListener('click', function () {
+            const nextDark = !body.classList.contains('theme-dark');
+            body.classList.toggle('theme-dark', nextDark);
+            localStorage.setItem('theme', nextDark ? 'dark' : 'light');
+            toggle.setAttribute('aria-pressed', String(nextDark));
+            toggle.textContent = nextDark ? 'Light mode' : 'Dark mode';
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

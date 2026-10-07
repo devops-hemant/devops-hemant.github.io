@@ -8,9 +8,101 @@
   --color-amber: #d4a24c;
   --color-muted: #596875;
   --color-line: #dce3e4;
+  --color-expertise-wash: rgb(255 255 255 / 44%);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: Georgia, "Times New Roman", serif;
   --content-width: 72rem;
+}
+
+body.theme-dark {
+  color-scheme: dark;
+  --color-ink: #eaf3f9;
+  --color-ink-soft: #d0dbe5;
+  --color-paper: #0b1220;
+  --color-surface: #111c2d;
+  --color-teal: #45d1c4;
+  --color-amber: #f0bf69;
+  --color-muted: #9aa9b8;
+  --color-line: #1d2d3d;
+  --color-expertise-wash: rgb(17 28 45 / 86%);
+}
+
+body.theme-dark .site-header {
+  background: rgb(11 18 32 / 92%);
+  border-color: rgb(255 255 255 / 8%);
+}
+
+body.theme-dark .site-nav a,
+body.theme-dark .footer-inner a,
+body.theme-dark .site-nav .nav-contact,
+body.theme-dark .text-link,
+body.theme-dark .location-line,
+body.theme-dark .intro-strip p,
+body.theme-dark .section-aside,
+body.theme-dark .experience-main > p:not(.organization):not(.tech-line),
+body.theme-dark .expertise-item p,
+body.theme-dark .achievement-list,
+body.theme-dark .toolkit-row p,
+body.theme-dark .project-card > p:not(.project-tools),
+body.theme-dark .credential-list li,
+body.theme-dark .education-entry p,
+body.theme-dark .language-line p,
+body.theme-dark .contact-card p,
+body.theme-dark .contact-phone-links a,
+body.theme-dark .contact-location-row h2,
+body.theme-dark .contact-page-copy,
+body.theme-dark .contact-card .contact-label {
+  color: var(--color-ink-soft);
+}
+
+body.theme-dark .site-nav .nav-contact {
+  color: #0b1220;
+  background: var(--color-teal);
+}
+
+body.theme-dark .site-nav .nav-contact:hover {
+  color: #0b1220;
+  background: #88e7dc;
+}
+
+body.theme-dark .theme-toggle {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+
+body.theme-dark .projects-section {
+  background: #0d1729;
+  box-shadow: 0 0 0 100vmax #0d1729;
+}
+
+body.theme-dark .project-card,
+body.theme-dark .credential-badge,
+body.theme-dark .contact-card {
+  background: rgba(17 28 45 / 90%);
+  border-color: rgb(255 255 255 / 8%);
+}
+
+body.theme-dark .expertise-item {
+  background: transparent;
+  border-color: rgb(255 255 255 / 8%);
+}
+
+body.theme-dark .project-card-featured,
+body.theme-dark .hero-note,
+body.theme-dark .contact-section {
+  background: linear-gradient(180deg, #102236 0%, #0a172a 100%);
+  box-shadow: 0 1.5rem 4rem rgb(2 6 12 / 35%);
+}
+
+body.theme-dark .button-light {
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+body.theme-dark .button-light:hover {
+  color: var(--color-ink);
+  background: #dfeaf3;
 }
 
 *,
@@ -155,17 +247,119 @@ a:hover {
   border-radius: 999px;
 }
 
+.theme-toggle {
+  padding: 0.5rem 0.8rem;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-teal);
+}
+
 .site-nav .nav-contact:hover {
   color: #fff;
   background: var(--color-teal);
 }
 
 .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.75fr);
   align-items: center;
   gap: clamp(2.5rem, 8vw, 7rem);
   padding-block: clamp(4rem, 9vw, 8.5rem) 4.5rem;
+}
+
+.hero::before,
+.contact-page-intro::before {
+  position: absolute;
+  z-index: 0;
+  inset: 4% -8% 0 auto;
+  width: min(82%, 58rem);
+  background:
+    radial-gradient(ellipse at 68% 42%, rgb(20 125 123 / 25%), transparent 58%),
+    radial-gradient(ellipse at 42% 62%, rgb(212 162 76 / 15%), transparent 56%);
+  filter: blur(18px);
+  opacity: 0.9;
+  content: "";
+  pointer-events: none;
+  animation: ambient-fade 11s ease-in-out infinite alternate;
+}
+
+.hero::after,
+.contact-page-intro::after {
+  position: absolute;
+  z-index: 0;
+  top: 6%;
+  right: 0;
+  width: min(56%, 38rem);
+  aspect-ratio: 1;
+  background-image: radial-gradient(circle, rgb(20 125 123 / 32%) 1.4px, transparent 1.8px);
+  background-position: 0 0;
+  background-size: 24px 24px;
+  content: "";
+  opacity: 0.28;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 12%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 12%, transparent 72%);
+  animation: ambient-grid-drift 24s linear infinite;
+}
+
+.hero > *,
+.contact-page-intro > * {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-page-intro {
+  position: relative;
+  isolation: isolate;
+}
+
+.contact-page-intro::before {
+  inset: -15% -8% -5% auto;
+}
+
+@keyframes ambient-fade {
+  from {
+    opacity: 0.58;
+    transform: scale(0.94) translateY(0);
+  }
+
+  to {
+    opacity: 0.95;
+    transform: scale(1.06) translateY(-0.8rem);
+  }
+}
+
+@keyframes ambient-grid-drift {
+  to {
+    background-position: 48px 24px;
+    transform: translateY(-0.8rem);
+  }
+}
+
+body.theme-dark .hero::before,
+body.theme-dark .contact-page-intro::before {
+  background:
+    radial-gradient(ellipse at 68% 42%, rgb(69 209 196 / 28%), transparent 58%),
+    radial-gradient(ellipse at 42% 62%, rgb(240 191 105 / 17%), transparent 56%);
+  opacity: 0.82;
+}
+
+body.theme-dark .hero::after,
+body.theme-dark .contact-page-intro::after {
+  background-image: radial-gradient(circle, rgb(69 209 196 / 38%) 1.4px, transparent 1.8px);
 }
 
 .eyebrow {
@@ -293,6 +487,19 @@ a:hover {
   isolation: isolate;
 }
 
+.hero-note::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(circle at 88% 78%, rgb(69 209 196 / 30%) 0, transparent 25%),
+    radial-gradient(circle at 80% 85%, rgb(240 191 105 / 16%) 0, transparent 35%);
+  content: "";
+  opacity: 0.62;
+  pointer-events: none;
+  animation: profile-glow 6s ease-in-out infinite alternate;
+}
+
 .hero-note > :not(.note-orbit) {
   position: relative;
   z-index: 1;
@@ -361,6 +568,7 @@ a:hover {
   height: 14rem;
   border: 1px solid rgb(255 255 255 / 12%);
   border-radius: 50%;
+  animation: orbit-pulse 7s ease-in-out infinite alternate;
 }
 
 .orbit-one {
@@ -374,6 +582,31 @@ a:hover {
   width: 8rem;
   height: 8rem;
   border-color: rgb(212 162 76 / 55%);
+  animation-delay: -3.5s;
+}
+
+@keyframes profile-glow {
+  from {
+    opacity: 0.28;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes orbit-pulse {
+  from {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.12);
+  }
 }
 
 .intro-strip {
@@ -452,8 +685,10 @@ a:hover {
 .expertise-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: linear-gradient(to right, transparent 0%, var(--color-expertise-wash) 12%, var(--color-expertise-wash) 88%, transparent 100%);
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
+  border-image: linear-gradient(to right, transparent, var(--color-line) 8%, var(--color-line) 92%, transparent) 1;
 }
 
 .expertise-item {
