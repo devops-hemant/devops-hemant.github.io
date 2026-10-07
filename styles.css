@@ -1223,23 +1223,53 @@ body.theme-dark .contact-page-intro::after {
   }
 
   .header-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.55rem;
     min-height: auto;
-    flex-wrap: wrap;
-    padding-block: 0.8rem;
+    padding-block: 0.65rem;
   }
 
   .site-nav {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.45rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: center;
+    justify-content: stretch;
+    gap: 0.5rem 0.4rem;
   }
 
   .site-nav a {
     font-size: 0.78rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .site-nav > a:nth-child(-n + 3) {
+    grid-row: 1;
+    grid-column: span 2;
   }
 
   .site-nav .nav-contact {
+    grid-row: 2;
+    grid-column: 1 / span 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    min-width: 7.5rem;
+    min-height: 2.125rem;
     padding: 0.4rem 0.75rem;
+  }
+
+  .site-nav .theme-toggle {
+    grid-row: 2;
+    grid-column: 4 / span 3;
+    justify-self: center;
+    min-width: 7.5rem;
+    min-height: 2.125rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
   }
 
   .hero {
