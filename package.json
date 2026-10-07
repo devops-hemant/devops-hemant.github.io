@@ -1,0 +1,24 @@
+{
+  "name": "devops-hemant.github.io",
+  "version": "1.0.0",
+  "description": "A lightweight, static resume site. The public website lives in `docs/`; project planning files and source resume documents remain outside that directory.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devops-hemant/devops-hemant.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/devops-hemant/devops-hemant.github.io/issues"
+  },
+  "homepage": "https://github.com/devops-hemant/devops-hemant.github.io#readme",
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}

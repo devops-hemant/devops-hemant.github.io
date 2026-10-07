@@ -8,6 +8,12 @@
 
 **Input**: User description: "we need to build a professional resume and a website of resume"
 
+## Clarifications
+
+### Session 2026-10-07
+
+- Q: Should the website and printable PDF resume share the same look and content hierarchy? → A: Yes — the website and printable PDF must use the same visual design, typography, labels, and section ordering, with only print-specific adjustments for page breaks and margins allowed.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Present a polished resume (Priority: P1)
@@ -73,8 +79,8 @@ A prospective employer needs to keep a copy of the resume or review it on paper,
 - **FR-004**: The website MUST present the same verified resume facts as the standalone resume, with the candidate's identity and major sections discoverable from the main page.
 - **FR-005**: The website MUST provide working contact and professional-profile actions for the valid details supplied by the owner.
 - **FR-006**: The website MUST remain readable and operable on common narrow and wide screen sizes without requiring horizontal scrolling for normal content.
-- **FR-007**: A visitor MUST be able to print or save a readable copy of the resume from the website, with page output that excludes controls and decoration that would obstruct the resume.
-- **FR-008**: Resume and website content MUST use clear, professional language, consistent dates and labels, and a visual hierarchy that supports quick scanning.
+- **FR-007**: A visitor MUST be able to print or save a readable copy of the resume from the website, with page output that preserves the same content hierarchy, typography, and visual treatment as the live resume while excluding controls and decoration that would obstruct the resume.
+- **FR-008**: Resume and website content MUST use clear, professional language, consistent dates and labels, and a visual hierarchy that supports quick scanning; the printable PDF must retain the same section ordering and styling approach as the website, with only print-specific page adjustments allowed.
 - **FR-009**: The owner MUST be able to review the resume and website content for accuracy before publication; no personal details absent from owner-provided information may be fabricated.
 
 ### Key Entities *(include if feature involves data)*
@@ -90,7 +96,7 @@ A prospective employer needs to keep a copy of the resume or review it on paper,
 - **SC-001**: In a review with at least five people unfamiliar with the candidate, at least four can identify the candidate's professional focus and locate the experience, skills, education, and contact information within 30 seconds.
 - **SC-002**: All verified facts and included resume sections appear consistently in both the standalone resume and website, with zero unsupported personal or career claims.
 - **SC-003**: The website can be read at both phone and desktop screen widths with no horizontal scrolling for normal page content and no content hidden behind overlapping elements.
-- **SC-004**: A visitor can produce a complete, legible printed or saved copy of the resume in a single attempt, without clipped text or website controls obstructing content.
+- **SC-004**: A visitor can produce a complete, legible printed or saved copy of the resume in a single attempt, with the same section hierarchy and styling direction as the website, without clipped text or website controls obstructing content.
 - **SC-005**: At least four out of five reviewers rate the resume and website as professional and easy to scan in a usability review.
 
 ## Assumptions

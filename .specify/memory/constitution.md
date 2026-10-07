@@ -1,10 +1,8 @@
 <!--
 Sync Impact Report
-- Version change: unratified template scaffold (no version) → 1.0.0
-- Principles: Principle 1–5 placeholders → Accurate Resume Content, Accessibility, Static-First
-	GitHub Pages Delivery, Privacy, and Performance and Maintainability
-- Sections: Section 2 and Section 3 placeholders → Additional Constraints and Development
-	Workflow
+- Version change: 1.1.0 → 1.2.0
+- Principles: Added Principle VI for Website and PDF Consistency; Additional Constraint added for resume PDF backup retention
+- Sections: Additional Constraints updated to require synchronized website/PDF content updates and PDF backup retention
 - Removed sections: none
 - Follow-up TODOs: none
 -->
@@ -51,10 +49,20 @@ field measurements exist, release checks MUST use repeatable lab measurements an
 obvious regressions. Changes MUST remain as simple as possible while preserving accessibility,
 privacy, accuracy, and the static-hosting constraint.
 
+### VI. Website and PDF Consistency
+Any content, styling, or hierarchy change made to the website resume MUST be mirrored in the
+printable PDF resume, and any change made to the PDF MUST be reflected in the website unless a
+print-specific adjustment is required for page breaks, margins, or other pagination-related
+constraints. Both outputs represent the same official resume and MUST retain the same verified
+facts, labels, ordering, and visual hierarchy; print-only adjustments may differ only where
+necessary to support PDF delivery and legibility.
+
 ## Additional Constraints
 - The initial product is one candidate's resume and public professional website; multi-user accounts, private dashboards, and job-application management are outside scope.
 - The owner MUST approve personal contact details, profile links, and any optional portfolio material before publication.
 - The site MUST remain readable on common phone and desktop viewport sizes and printable as a complete resume without controls obscuring its content.
+- The website and the downloadable or printable PDF MUST remain synchronized: any update to content, labels, ordering, or styling in one format MUST be reflected in the other unless the change is limited to print-only pagination or margin adjustments.
+- A current backup of the official resume PDF MUST be retained at all times so the project can recover the latest approved resume version if a regenerated copy is edited, lost, or replaced inadvertently.
 - External fonts, scripts, images, and embeds MUST have a documented purpose and a safe fallback; they MUST NOT prevent visitors from reading the core resume if unavailable.
 - Any proposed feature that conflicts with these constraints MUST be explicitly scoped and reviewed as a constitutional exception before implementation.
 
@@ -81,4 +89,4 @@ backward-incompatible governance changes, MINOR for new or materially expanded p
 constraints, and PATCH for clarifications that do not change obligations. Reviewers MUST
 resolve conflicts in favor of this constitution until it is formally amended.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-07 | **Last Amended**: 2026-10-07
+**Version**: 1.2.0 | **Ratified**: 2026-10-07 | **Last Amended**: 2026-10-07
