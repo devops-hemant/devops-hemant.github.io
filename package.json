@@ -1,6 +1,6 @@
 {
   "name": "devops-hemant.github.io",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A lightweight, static resume site. The public website lives in `docs/`; project planning files and source resume documents remain outside that directory.",
   "main": "index.js",
   "scripts": {

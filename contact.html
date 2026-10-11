@@ -15,12 +15,18 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="wordmark" href="index.html" aria-label="Hemant Sharma, back to homepage">HS<span>.</span></a>
-        <nav class="site-nav" aria-label="Main navigation">
+        <button class="mobile-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">
+          <span class="menu-icon" aria-hidden="true"></span><span class="menu-toggle-label">Menu</span>
+        </button>
+        <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"></path></svg>
+        </button>
+        <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
           <a href="index.html#experience">Experience</a>
           <a href="index.html#expertise">Expertise</a>
           <a href="index.html#projects">Projects</a>
           <a class="nav-contact" href="index.html">Profile <span aria-hidden="true">↗</span></a>
-          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">Dark mode</button>
         </nav>
       </div>
     </header>
@@ -93,20 +99,50 @@
       (function () {
         const body = document.body;
         const toggle = document.querySelector('.theme-toggle');
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navigation = document.querySelector('.site-nav');
         const storedTheme = localStorage.getItem('theme');
         const isDark = storedTheme ? storedTheme === 'dark' : true;
         body.classList.toggle('theme-dark', isDark);
 
+        if (menuToggle && navigation) {
+          menuToggle.addEventListener('click', function () {
+            const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', String(!isOpen));
+            navigation.classList.toggle('is-open', !isOpen);
+            menuToggle.querySelector('.menu-toggle-label').textContent = isOpen ? 'Menu' : 'Close';
+          });
+
+          navigation.addEventListener('click', function (event) {
+            if (event.target.closest('a')) {
+              menuToggle.setAttribute('aria-expanded', 'false');
+              navigation.classList.remove('is-open');
+              menuToggle.querySelector('.menu-toggle-label').textContent = 'Menu';
+            }
+          });
+
+          document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+              menuToggle.setAttribute('aria-expanded', 'false');
+              navigation.classList.remove('is-open');
+              menuToggle.querySelector('.menu-toggle-label').textContent = 'Menu';
+              menuToggle.focus();
+            }
+          });
+        }
+
         if (toggle) {
           toggle.setAttribute('aria-pressed', String(isDark));
-          toggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+          toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
 
           toggle.addEventListener('click', function () {
             const nextDark = !body.classList.contains('theme-dark');
             body.classList.toggle('theme-dark', nextDark);
             localStorage.setItem('theme', nextDark ? 'dark' : 'light');
             toggle.setAttribute('aria-pressed', String(nextDark));
-            toggle.textContent = nextDark ? 'Light mode' : 'Dark mode';
+            toggle.setAttribute('aria-label', nextDark ? 'Switch to light mode' : 'Switch to dark mode');
+            toggle.setAttribute('title', nextDark ? 'Switch to light mode' : 'Switch to dark mode');
           });
         }
       })();
