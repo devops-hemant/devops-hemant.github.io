@@ -879,6 +879,18 @@ body.theme-dark .contact-page-intro::after {
   color: rgb(255 255 255 / 82%);
 }
 
+.project-capabilities {
+  margin: 1rem 0 0;
+  padding-left: 1.15rem;
+  color: rgb(255 255 255 / 82%);
+  font-size: 0.77rem;
+  line-height: 1.7;
+}
+
+.project-card:not(.project-card-featured) .project-capabilities {
+  display: none;
+}
+
 .project-tools {
   margin: 1.05rem 0 0;
   color: var(--color-teal);
@@ -1647,6 +1659,16 @@ body.theme-dark .contact-page-intro::after {
     scroll-behavior: auto;
   }
 
+  body.theme-dark,
+  body.theme-dark * {
+    background: #fff !important;
+    background-color: #fff !important;
+    color: #1d2730 !important;
+    border-color: #dfe5ea !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   .site-header,
   .skip-link,
   .hero-actions,
@@ -1705,7 +1727,7 @@ body.theme-dark .contact-page-intro::after {
 
   .note-index,
   .note-company {
-    color: #146b68;
+    color: #263642;
   }
 
   .note-title {
@@ -1810,15 +1832,20 @@ body.theme-dark .contact-page-intro::after {
   }
 
   .project-card-featured h3,
-  .project-card-featured p,
+  .project-card-featured p:not(.project-tools),
   .project-card-featured .project-type,
-  .project-card-featured .project-tools {
+  .project-card-featured .project-tools,
+  .project-card-featured .project-capabilities {
     color: #263642;
   }
 
   .project-card-featured .project-type,
   .project-card-featured .project-tools {
-    color: #146b68;
+    color: #263642;
+  }
+
+  .project-card-featured .project-capabilities {
+    color: #4c5962;
   }
 
   .project-card h3 {
